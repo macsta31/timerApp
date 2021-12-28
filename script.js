@@ -244,6 +244,15 @@ let clearFields =(e) => {
     e.preventDefault();
     e.path[1].reset();
 }
+let bgGradientChange = (e) => {
+    var widthP = Math.abs(e.screenX / 1000)*100;
+    var root = document.querySelector(':root');
+    root.style.setProperty('--bg-percent', `${widthP}%`);
+    // console.log(heightP);
+
+
+
+}
 
 document.getElementById('clear-saves').addEventListener('click', clearSaves);
 document.getElementById('savedTimers').addEventListener('click', savedClick);
@@ -251,6 +260,7 @@ window.addEventListener('storage', getSaves);
 document.getElementById('reset').addEventListener('click', resetTimer);
 document.getElementById('timer-start').addEventListener('click', startTimer);
 document.getElementById('reset-input').addEventListener('click', clearFields);
+window.addEventListener('mousemove', bgGradientChange);
 const submitForm = document.getElementById('saveTimer');
 submitForm.addEventListener('submit', saveTimer);
 

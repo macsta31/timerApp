@@ -1,4 +1,8 @@
 /* global */
+:root{
+    --bg-percent: 50%;
+}
+
 
 *{
     /* border: 1px solid black; */
@@ -11,7 +15,7 @@
 }
 body{
     height:100vh;
-    background: linear-gradient(to bottom, salmon, lightblue); 
+    background: linear-gradient(to right bottom, #b3b3e6 var(--bg-percent), lightblue); 
     display: flex;
     justify-content:center;
     align-items:center;
