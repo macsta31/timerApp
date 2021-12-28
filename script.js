@@ -42,17 +42,21 @@ let setHours = (hours) =>{
 }
 
 
-let setMinutes = (minutes) =>{
-    if(minutes == 0){
-        minutes = "00";
+let setMinutes = (minutesA) =>{
+
+    if(minutesA == 0){
+        minutesA = "00";
     }
-    else if(minutes < 10){
-        minutes = "0"+minutes;
+    else if(minutesA < 10){
+        minutesA = "0"+minutesA;
     }
-    document.getElementById('timer-minutes').innerHTML = `<h3>${minutes}:</h3>`
+
+
+    document.getElementById('timer-minutes').innerHTML = `<h3>${minutesA}:</h3>`
 
 }
 let setSeconds = (seconds) =>{
+    // console.log(seconds);
     if(seconds == 0){
         seconds = "00";
     }
@@ -71,7 +75,7 @@ let assignDigits = () =>{
     let minutesOverflow = 0;
 
     let seconds = 0;
-    let minutes = 0;
+    let minutesA = 0;
     let hours = 0;
 
     seconds = Math.floor(document.getElementById('seconds').value);
@@ -79,21 +83,39 @@ let assignDigits = () =>{
         seconds -= 60;
         secondsOverflow += 1;
     }
-    minutes += secondsOverflow;
-    minutes += Math.floor(document.getElementById('minutes').value);
-    while(minutes >= 60){
-        minutes -= 60;
+    minutesA += secondsOverflow;
+
+    minutesA += Math.floor(document.getElementById('minutes').value);
+
+    while(minutesA >= 60){
+        minutesA -= 60;
         minutesOverflow += 1;
     }
+    // console.log(minutes)
     hours += minutesOverflow;
     hours += Math.floor(document.getElementById('hours').value);
-    
+
+    if(hours != 0 && minutesA == 0){
+
+        hours -= 1;
+        minutesA = 59;
+
+        if(seconds == 0){
+            seconds = 59;
+        }
+    }
+    if(minutesA != 0 && seconds == 0){
+        minutesA -= 1;
+        seconds = 59;
+    }
     
     
 
-    setHours(hours);
-    setMinutes(minutes);
     setSeconds(seconds);
+    setMinutes(minutesA);
+    setHours(hours);
+    
+    
 }
 
 let secondDown = () => {
@@ -165,13 +187,15 @@ let startTimer = (e) => {
     resetTimer();
     assignDigits();
     
-    let secondValue = seconds.value;
+    let secondValue = document.getElementById('timer-seconds').innerText;
+
     let minuteValue = minutes.value;
     window.setInterval(secondDown, 1000);
-    minuteTimeout = secondValue*1000;
+    minuteTimeout = (secondValue*1000);
+    console.log(minuteTimeout);
     window.setTimeout(minuteStart, minuteTimeout);
     hourTimeout = (minuteValue*60000)+(secondValue*1000);
-    console.log(hourTimeout);
+
     window.setTimeout(hourStart, hourTimeout); 
     
 }
@@ -179,7 +203,7 @@ let resetTimer = (e) => {
     
     var killId = setTimeout(function() {
         for (var i = killId; i > 0; i--) clearInterval(i)
-      }, 0);
+    }, 0);
 
     setSeconds(0);
     setMinutes(0);
@@ -218,11 +242,17 @@ let clearSaves = () => {
     getSaves();
 
 }
+let clearFields =(e) => {
+    e.preventDefault();
+    e.path[1].reset();
+}
+
 document.getElementById('clear-saves').addEventListener('click', clearSaves);
 document.getElementById('savedTimers').addEventListener('click', savedClick);
 window.addEventListener('storage', getSaves);
 document.getElementById('reset').addEventListener('click', resetTimer);
 document.getElementById('timer-start').addEventListener('click', startTimer);
+document.getElementById('reset-input').addEventListener('click', clearFields);
 const submitForm = document.getElementById('saveTimer');
 submitForm.addEventListener('submit', saveTimer);
 

@@ -118,6 +118,17 @@ input{
     transition: 500ms cubic-bezier(0.34, 2.34, 0.24, 0.96);
 }
 
+#reset-input{
+    margin-left: 1em;
+    transition: 500ms cubic-bezier(0.34, 2.34, 0.24, 0.96);
+    
+}
+
+#reset-input:hover{
+    cursor: pointer;
+    transform: scale(1.12);
+}
+
 
 
 
