@@ -96,11 +96,9 @@ let assignDigits = () =>{
     hours += Math.floor(document.getElementById('hours').value);
 
     if(hours != 0 && minutesA == 0){
-
-        hours -= 1;
-        minutesA = 59;
-
         if(seconds == 0){
+            hours -= 1;
+            minutesA = 59;
             seconds = 59;
         }
     }
