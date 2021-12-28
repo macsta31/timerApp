@@ -8,38 +8,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1>Make A Timer</h1>
-            <nav id="topnav">
-                <ul id="savedTimers">
-                    <li id="placeholder">Try saving a timer</li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <div class="container">
-        <div id="timerInput">
-            <form>
-                <input class="time" id="hours" type="text" placeholder="hours">
-                <input class="time" id="minutes" type="text" placeholder="minutes">
-                <input class="time" id="seconds" type="text" placeholder="seconds">
-            </form>
-        </div>
-        <div class="timerbox">
-            <h2 id="timertext">
-                <h3 id="timer-hours">00:</h3><h3 id="timer-minutes">00:</h3><h3 id="timer-seconds">00</h3>
-            </h2>
-        </div>
-        <div class="buttons">
-            <button type="submit" id="timer-start">Start The Timer</button>
-            <button type="submit" id="reset">Reset Timer</button>
-            <button type="submit" id="clear-saves">Clear Saved Timers</button>
-            <form id="saveTimer">
-                <input type="text" id="timer-name" placeholder="Timer Name">
-                <button id="saveButton" type="submit">Save Timer</button>
-            </form>
+    <div class="body-container">
+
+        <header>
+            <div class="header-container">
+                <h1>Make A Timer</h1>
+                <nav id="topnav">
+                    <ul id="savedTimers">
+                        <li id="placeholder">Try saving a timer</li>
+                    </ul>
+                </nav>
             </div>
+        </header>
+        <div class="container">
+            <div id="timerInput">
+                <form>
+                    <input class="time" id="hours" type="text" placeholder="hours">
+                    <input class="time" id="minutes" type="text" placeholder="minutes">
+                    <input class="time" id="seconds" type="text" placeholder="seconds">
+                </form>
+            </div>
+            <div class="timerbox">
+                <h2 id="timertext">
+                    <h3 id="timer-hours">00:</h3><h3 id="timer-minutes">00:</h3><h3 id="timer-seconds">00</h3>
+                </h2>
+            </div>
+            <div class="buttons">
+                <button type="submit" id="timer-start">Start The Timer</button>
+                <button type="submit" id="reset">Reset Timer</button>
+                <button type="submit" id="clear-saves">Clear Saved Timers</button>
+                <form id="saveTimer">
+                    <input type="text" id="timer-name" placeholder="Timer Name">
+                    <button id="saveButton" type="submit">Save Timer</button>
+                </form>
+                </div>
+        </div>
     </div>
 
 <script src="script.js"></script>   
